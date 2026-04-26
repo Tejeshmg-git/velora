@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 | Access Denied - Velora</title>
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link href="https://api.fontshare.com/v2/css?f[]=clash-display@200,400,700&f[]=satoshi@300,400,700&display=swap" rel="stylesheet">
+</head>
+<body class="dark-mode coming-soon-page"> <!-- Reusing terminal base -->
+    
+    <!-- Minimalist Nav -->
+    <nav class="coming-soon-nav">
+        <a href="../index.html" class="back-link">← Home</a>
+        <div class="theme-toggle" id="theme-toggle">
+            <span class="toggle-icon">☾</span>
+        </div>
+    </nav>
+
+    <main class="terminal-container">
+        <div class="terminal-content text-center">
+            
+            <a href="../index.html" class="logo brand-logo reveal-item" style="margin-bottom: var(--space-8); margin-left: auto; margin-right: auto; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 10px;">
+                <svg class="logo-icon-svg" viewBox="0 0 24 24" fill="currentColor" style="width: 32px; height: 32px;"><path d="m2 4 3 12h14l3-12-6 7-4-7-4 7-6-7z"></path></svg>
+                <span class="logo-text">VELORA</span>
+            </a>
+
+            <div class="error-code-container reveal-item">
+                <h1 class="error-code">404</h1>
+            </div>
+
+            <h2 class="terminal-title reveal-text" style="font-size: var(--fs-4xl); margin-bottom: var(--space-4);">Signal <span class="text-gold">Lost.</span></h2>
+            
+            <p class="error-desc reveal-item" style="max-width: 500px; margin: 0 auto var(--space-8); opacity: 0.6; line-height: 1.6;">
+                The coordinates you requested are beyond the Elite Circle. <br>
+                Access denied or path encrypted. Return to the origin for re-calibration.
+            </p>
+
+            <div class="error-actions reveal-item">
+                <a href="../index.html" class="btn btn-primary">Return to Sanctuary</a>
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        // Theme Toggle Logic
+        const toggle = document.getElementById('theme-toggle');
+        const body = document.body;
+        const icon = toggle.querySelector('.toggle-icon');
+
+        toggle.addEventListener('click', () => {
+            const isDark = body.classList.contains('dark-mode');
+            const logoImg = document.querySelector('.terminal-logo-icon');
+            
+            if (isDark) {
+                body.classList.replace('dark-mode', 'light-mode');
+                icon.innerText = '☀';
+                logoImg.src = '../assets/img/crown-icon-light.png';
+            } else {
+                body.classList.replace('light-mode', 'dark-mode');
+                icon.innerText = '☾';
+                logoImg.src = '../assets/img/crown-icon-dark.png';
+            }
+        });
+    </script>
+</body>
+</html>

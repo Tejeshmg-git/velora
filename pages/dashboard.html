@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sovereign Command — Velora Dashboard</title>
+    <meta name="description" content="Private operational command center for Velora elite members.">
+    
+    <!-- Fonts -->
+    <link href="https://api.fontshare.com/v2/css?f[]=clash-display@200,400,700&f[]=satoshi@300,400,700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+</head>
+<body class="dark-mode dashboard-app-view">
+    
+    <div class="dashboard-shell">
+        <!-- Sidebar Navigation -->
+        <aside class="dashboard-sidebar" id="main-sidebar">
+            <div class="sidebar-brand">
+                <a href="../index.html" class="logo">
+                    <svg class="logo-icon-svg" viewBox="0 0 24 24" fill="currentColor"><path d="m2 4 3 12h14l3-12-6 7-4-7-4 7-6-7z"></path></svg>
+                    <span>VELORA</span>
+                </a>
+            </div>
+
+            <nav class="sidebar-nav">
+                <ul class="nav-list">
+                    <li class="nav-item active" data-sector="hub">
+                        <span class="action-icon">📊</span>
+                        <span class="nav-label">Overview</span>
+                        <span class="nav-dot"></span>
+                    </li>
+                    <li class="nav-item" data-sector="ops">
+                        <span class="action-icon">📡</span>
+                        <span class="nav-label">Operations</span>
+                        <span class="nav-dot"></span>
+                    </li>
+                    <li class="nav-item" data-sector="assets">
+                        <span class="action-icon">🏰</span>
+                        <span class="nav-label">Portfolio</span>
+                        <span class="nav-dot"></span>
+                    </li>
+                    <li class="nav-item" data-sector="vault">
+                        <span class="action-icon">💎</span>
+                        <span class="nav-label">The Vault</span>
+                        <span class="nav-dot"></span>
+                    </li>
+                    <li class="nav-item" data-sector="comm">
+                        <span class="action-icon">💬</span>
+                        <span class="nav-label">Messages</span>
+                        <span class="nav-dot"></span>
+                    </li>
+                </ul>
+
+                <div class="sidebar-actions">
+                    <div class="action-item theme-switch">
+                        <div class="action-left">
+                            <span class="action-icon">🌓</span>
+                            <span class="action-label">Dark Mode</span>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" id="dashboard-theme-toggle" checked>
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                    <div class="action-item nav-item-action" data-sector="settings">
+                        <span class="action-icon">⚙</span>
+                        <span class="action-label">Settings</span>
+                    </div>
+                    <a href="../index.html" class="action-item">
+                        <span class="action-icon">🏠</span>
+                        <span class="action-label">Back to Home</span>
+                    </a>
+                    <button class="action-item logout-btn">
+                        <span class="action-icon">🚪</span>
+                        <span class="action-label">Logout</span>
+                    </button>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="dashboard-content">
+            <!-- Top Persistent HUD -->
+            <header class="dashboard-top-nav">
+                <div class="hud-left">
+                    <div class="dash-menu-toggle" id="sidebar-toggle">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                    </div>
+                    <div class="telemetry-block">
+                        <span class="t-label">SECURITY STATUS</span>
+                        <span class="t-value"><span class="pulse-dot"></span> LEVEL 5 / SECURE</span>
+                    </div>
+                    <div class="telemetry-block">
+                        <span class="t-label">GLOBAL ACCESS</span>
+                        <span class="t-value">INFINITE PROTOCOL</span>
+                    </div>
+                </div>
+
+                <div class="hud-right">
+                    <div class="nav-notification">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+                        <span class="notif-badge"></span>
+                    </div>
+                    
+                    <div class="user-brief-top">
+                        <div class="user-avatar-small">AM</div>
+                        <div class="user-meta-small">
+                            <strong>Alexander Maxwell</strong>
+                            <span>Ambassador V.01</span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Sector Containers -->
+            <div class="sector-viewport">
+                <!-- SECTOR: OVERVIEW -->
+                <section class="dashboard-sector active" id="sector-hub">
+                    <div class="sector-header">
+                        <h2>Command <span class="text-gold">Hub.</span></h2>
+                        <p>Real-time operational summary for your global footprint.</p>
+                    </div>
+
+                    <div class="hub-grid">
+                        <div class="grid-main">
+                            <div class="dashboard-card main-status-card">
+                                <h3>Active Mandates</h3>
+                                <div class="mandate-summary-list">
+                                    <div class="summary-item">
+                                        <div class="s-info">
+                                            <strong>G-V Positioning</strong>
+                                            <span>In Transit // North Atlantic</span>
+                                        </div>
+                                        <div class="s-status pulse">85%</div>
+                                    </div>
+                                    <div class="summary-item">
+                                        <div class="s-info">
+                                            <strong>Swiss Estate Sanitization</strong>
+                                            <span>Processing // St. Moritz</span>
+                                        </div>
+                                        <div class="s-status">40%</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="grid-sub">
+                                <div class="dashboard-card mini-card">
+                                    <span class="card-label">Digital Health</span>
+                                    <strong class="card-value">Sanitized</strong>
+                                </div>
+                                <div class="dashboard-card mini-card">
+                                    <span class="card-label">Live Channels</span>
+                                    <strong class="card-value">02</strong>
+                                </div>
+                            </div>
+
+                            <div class="dashboard-card ops-log-card">
+                                <h3>Operational Logs</h3>
+                                <div class="log-list">
+                                    <div class="log-item">
+                                        <span class="l-time">09:42</span>
+                                        <span class="l-event">Biometric handshake successful // NY Node</span>
+                                    </div>
+                                    <div class="log-item">
+                                        <span class="l-time">09:14</span>
+                                        <span class="l-event">Mandate #702 // Airspace Entry: Gander FIR</span>
+                                    </div>
+                                    <div class="log-item">
+                                        <span class="l-time">08:05</span>
+                                        <span class="l-event">Belgravia Perimeter Sweep // No anomalies</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid-sidebar">
+                            <div class="dashboard-card architect-card">
+                                <h3>Account Architect</h3>
+                                <div class="architect-brief">
+                                    <div class="a-avatar" style="background-image: url('../assets/images/julian_thorne_portrait.png'); background-size: cover; background-position: center;"></div>
+                                    <div class="a-info">
+                                        <strong>Julian Thorne</strong>
+                                        <span>Lead Strategist</span>
+                                    </div>
+                                </div>
+                                <div class="status-badge-inline">SECURE LINE ACTIVE</div>
+                            </div>
+
+                            <div class="dashboard-card vault-preview">
+                                <h3>Market Alert</h3>
+                                <div class="v-preview-item">
+                                    <div class="v-preview-img" style="background-image: url('../assets/images/service/Global Estates.jpg');"></div>
+                                    <div class="v-preview-info">
+                                        <strong>Azure Coast</strong>
+                                        <span>Off-Market Listing</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="dashboard-card stats-mini-card">
+                                <h3>Digital Footprint</h3>
+                                <div class="footprint-visual">
+                                    <div class="f-bar" style="height: 60%;"></div>
+                                    <div class="f-bar" style="height: 80%;"></div>
+                                    <div class="f-bar active" style="height: 100%;"></div>
+                                    <div class="f-bar" style="height: 70%;"></div>
+                                    <div class="f-bar" style="height: 90%;"></div>
+                                </div>
+                                <p class="footprint-desc">Security protocols optimized // Sanitization active.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECTOR: OPERATIONS -->
+                <section class="dashboard-sector" id="sector-ops">
+                    <div class="sector-header">
+                        <h2>Operational <span class="text-gold">Tracking.</span></h2>
+                        <p>Live manifest and logistical management across active theaters.</p>
+                    </div>
+                    
+                    <div class="ops-layout">
+                        <div class="grid-main">
+                            <div class="dashboard-card ops-main-card">
+                                <div class="card-header-flex">
+                                    <h3>Aviation Manifest // #VLR-AX-702</h3>
+                                    <span class="badge-gold">IN-AIR</span>
+                                </div>
+                                <div class="logistics-timeline">
+                                    <div class="t-step completed">
+                                        <span class="t-dot"></span>
+                                        <div class="t-content">
+                                            <strong>Departure: Teterboro (TEB)</strong>
+                                            <span>Cleared // 08:14 EST</span>
+                                        </div>
+                                    </div>
+                                    <div class="t-step active">
+                                        <span class="t-dot"></span>
+                                        <div class="t-content">
+                                            <strong>Mid-Atlantic Positioning</strong>
+                                            <span>Alt: 41,000ft // Speed: Mach 0.85</span>
+                                        </div>
+                                    </div>
+                                    <div class="t-step">
+                                        <span class="t-dot"></span>
+                                        <div class="t-content">
+                                            <strong>Arrival: London City (LCY)</strong>
+                                            <span>ETA: 04:22m</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="dashboard-card">
+                                <h3>Ground Manifest // LCY Synchronization</h3>
+                                <div class="ground-manifest-table">
+                                    <div class="gm-row header">
+                                        <span>Asset</span>
+                                        <span>Status</span>
+                                        <span>Assignment</span>
+                                    </div>
+                                    <div class="gm-row">
+                                        <span>Range Rover Sentinel</span>
+                                        <span class="text-gold">Ready</span>
+                                        <span>Primary Transport</span>
+                                    </div>
+                                    <div class="gm-row">
+                                        <span>S-Class Guard</span>
+                                        <span class="text-gold">Ready</span>
+                                        <span>Escort Alpha</span>
+                                    </div>
+                                    <div class="gm-row">
+                                        <span>Tactical Detail</span>
+                                        <span class="text-gold">Active</span>
+                                        <span>Close Protection</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid-sidebar">
+                            <div class="dashboard-card">
+                                <h3>Logistical Status</h3>
+                                <ul class="status-list">
+                                    <li><span>Chauffeur Sync</span> <strong class="text-gold">READY</strong></li>
+                                    <li><span>Security Detail</span> <strong class="text-gold">POSITIONED</strong></li>
+                                    <li><span>LCY Tarmac Access</span> <strong class="text-gold">GRANTED</strong></li>
+                                    <li><span>Customs Pre-Clearance</span> <strong class="text-gold">VERIFIED</strong></li>
+                                </ul>
+                            </div>
+                            <div class="dashboard-card">
+                                <h3>Global Command Nodes</h3>
+                                <div class="node-grid-mini">
+                                    <div class="n-item"><span>NYC</span> <div class="n-dot active"></div></div>
+                                    <div class="n-item"><span>LDN</span> <div class="n-dot active"></div></div>
+                                    <div class="n-item"><span>DXB</span> <div class="n-dot pulse"></div></div>
+                                    <div class="n-item"><span>SIN</span> <div class="n-dot"></div></div>
+                                    <div class="n-item"><span>PAR</span> <div class="n-dot active"></div></div>
+                                    <div class="n-item"><span>TOK</span> <div class="n-dot"></div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECTOR: PORTFOLIO -->
+                <section class="dashboard-sector" id="sector-assets">
+                    <div class="sector-header">
+                        <h2>Portfolio <span class="text-gold">Stewardship.</span></h2>
+                        <p>Telemetric monitoring of managed global estates and high-value assets.</p>
+                    </div>
+                    
+                    <div class="portfolio-grid">
+                        <div class="grid-main">
+                            <div class="dashboard-card asset-large">
+                                <div class="asset-hero-img" style="background-image: url('../assets/images/service/Global Estates.jpg');"></div>
+                                <div class="asset-hero-content">
+                                    <h3>Belgravia Residence, London</h3>
+                                    <div class="asset-telemetry">
+                                        <div class="tel-item">
+                                            <span>Security</span>
+                                            <strong>Active // L5</strong>
+                                        </div>
+                                        <div class="tel-item">
+                                            <span>Climate</span>
+                                            <strong>21°C // 45%</strong>
+                                        </div>
+                                        <div class="tel-item">
+                                            <span>Staff</span>
+                                            <strong>03 Present</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="dashboard-card">
+                                <h3>Asset Inventory // Active Management</h3>
+                                <div class="asset-inventory-list">
+                                    <div class="ai-item">
+                                        <div class="ai-info">
+                                            <strong>Swiss Alpine Estate</strong>
+                                            <span>St. Moritz // Maintenance Active</span>
+                                        </div>
+                                        <div class="ai-telemetry"><span>TEMP</span> <strong>-4°C</strong></div>
+                                    </div>
+                                    <div class="ai-item">
+                                        <div class="ai-info">
+                                            <strong>Azure Coast Villa</strong>
+                                            <span>Saint-Tropez // Sanitized</span>
+                                        </div>
+                                        <div class="ai-telemetry"><span>SECURITY</span> <strong class="text-gold">L5</strong></div>
+                                    </div>
+                                    <div class="ai-item">
+                                        <div class="ai-info">
+                                            <strong>Tokyo Sky Gallery</strong>
+                                            <span>Shinjuku // Operational</span>
+                                        </div>
+                                        <div class="ai-telemetry"><span>HUMIDITY</span> <strong>52%</strong></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid-sidebar">
+                            <div class="dashboard-card">
+                                <h3>Aviation Asset</h3>
+                                <div class="asset-brief-flex">
+                                    <div class="ab-icon">✈</div>
+                                    <div class="ab-info">
+                                        <strong>Gulfstream V-G650</strong>
+                                        <span>VLR-702 // Operational</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="dashboard-card">
+                                <h3>Horology Portfolio</h3>
+                                <div class="watch-stat">
+                                    <div class="w-item">
+                                        <span>Managed Timepieces</span>
+                                        <strong>12 Units</strong>
+                                    </div>
+                                    <div class="w-item">
+                                        <span>Vault Location</span>
+                                        <strong>Zurich Node</strong>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="dashboard-card">
+                                <h3>Portfolio Valuation</h3>
+                                <div class="valuation-stat">
+                                    <span class="v-label">Total Managed Value</span>
+                                    <span class="v-total text-gold">$142.5M</span>
+                                    <span class="v-change">+2.4% YTD</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECTOR: THE VAULT -->
+                <section class="dashboard-sector" id="sector-vault">
+                    <div class="sector-header">
+                        <h2>The <span class="text-gold">Vault.</span></h2>
+                        <p>Off-market acquisitions and global opportunities curated for your profile.</p>
+                    </div>
+                    
+                    <div class="vault-items-grid">
+                        <div class="dashboard-card vault-card-v3">
+                            <div class="v-card-visual" style="background-image: url('../assets/images/home-v2/Luxury Estates.jpg');"></div>
+                            <div class="v-card-body">
+                                <div class="v-tag">REAL ESTATE</div>
+                                <h3>The Zenith Penthouse, NYC</h3>
+                                <p>Triple-aspect off-market duplex with 360° views of Central Park. Private helipad access.</p>
+                                <div class="v-footer">
+                                    <span class="v-price">$85,000,000</span>
+                                    <span class="status-label-gold">DOSSIER READY</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="dashboard-card vault-card-v3">
+                            <div class="v-card-visual" style="background-image: url('../assets/images/home-v2/Rare Timepieces.jpg');"></div>
+                            <div class="v-card-body">
+                                <div class="v-tag">HOROLOGY</div>
+                                <h3>Patek Philippe Ref. 2499</h3>
+                                <p>Exceptional 1952 first-series perpetual calendar chronograph. Direct private treaty.</p>
+                                <div class="v-footer">
+                                    <span class="v-price">Inquiry Only</span>
+                                    <span class="status-label-gold">DOSSIER READY</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="dashboard-card vault-card-v3">
+                            <div class="v-card-visual" style="background-image: url('../assets/images/home-v2/Private Island.jpg');"></div>
+                            <div class="v-card-body">
+                                <div class="v-tag">YACHTING</div>
+                                <h3>Azzam II // Charter Opportunity</h3>
+                                <p>Exclusive 10-day off-market charter window in the Mediterranean. Full staff complement.</p>
+                                <div class="v-footer">
+                                    <span class="v-price">POA</span>
+                                    <span class="status-label-gold">DOSSIER READY</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="dashboard-card vault-card-v3">
+                            <div class="v-card-visual" style="background-image: url('../assets/images/home-v2/Fine Art Investment.jpg');"></div>
+                            <div class="v-card-body">
+                                <div class="v-tag">ART</div>
+                                <h3>Basquiat // Private Treaty</h3>
+                                <p>Early 1982 canvas. Exceptional provenance. Directly from a private estate collection.</p>
+                                <div class="v-footer">
+                                    <span class="v-price">$45M - $55M</span>
+                                    <span class="status-label-gold">DOSSIER READY</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECTOR: MESSAGES -->
+                <section class="dashboard-sector" id="sector-comm">
+                    <div class="sector-header">
+                        <h2>Secure <span class="text-gold">Messages.</span></h2>
+                        <p>Encrypted operational channel with your dedicated management team.</p>
+                    </div>
+                    
+                    <div class="comm-grid">
+                        <div class="chat-main">
+                            <div class="dashboard-card chat-interface">
+                                <div class="chat-history">
+                                    <div class="msg-group date">Today, 25 April</div>
+                                    <div class="msg-item incoming">
+                                        <div class="m-avatar-chat">JT</div>
+                                        <div class="m-bubble">
+                                            <p>Mandate #702 is currently over the Atlantic. Arrival in London remains on schedule for 03:00 GMT.</p>
+                                            <span class="m-timestamp">09:14</span>
+                                        </div>
+                                    </div>
+                                    <div class="msg-item outgoing">
+                                        <div class="m-bubble">
+                                            <p>Excellent. Ensure the Belgravia ground detail is synchronized for the early arrival.</p>
+                                            <span class="m-timestamp">09:16</span>
+                                        </div>
+                                    </div>
+                                    <div class="msg-item incoming">
+                                        <div class="m-avatar-chat">JT</div>
+                                        <div class="m-bubble">
+                                            <p>Confirmed. Chauffeur and security team are on standby. House staff has prepared the master suite.</p>
+                                            <span class="m-timestamp">09:20</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="chat-input-dashboard">
+                                    <input type="text" placeholder="SECURE CHANNEL ACTIVE // AWAITING COMMAND...">
+                                    <div class="transmit-indicator">📡</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="chat-sidebar">
+                            <div class="dashboard-card">
+                                <h3>Operational Documents</h3>
+                                <div class="doc-list">
+                                    <div class="doc-item">
+                                        <span class="doc-icon">📄</span>
+                                        <div class="doc-info">
+                                            <strong>Flight Manifest</strong>
+                                            <span>PDF // 1.2MB</span>
+                                        </div>
+                                    </div>
+                                    <div class="doc-item">
+                                        <span class="doc-icon">📄</span>
+                                        <div class="doc-info">
+                                            <strong>Estate Audit</strong>
+                                            <span>PDF // 4.5MB</span>
+                                        </div>
+                                    </div>
+                                    <div class="doc-item">
+                                        <span class="doc-icon">📄</span>
+                                        <div class="doc-info">
+                                            <strong>Vetting Dossier</strong>
+                                            <span>PDF // 0.8MB</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="dashboard-card">
+                                <h3>Team on Standby</h3>
+                                <div class="team-list">
+                                    <div class="team-item">
+                                        <div class="t-avatar-mini" style="background-image: url('../assets/images/julian_thorne_portrait.png'); background-size: cover; background-position: center;"></div>
+                                        <div class="t-meta">
+                                            <strong>Julian T.</strong>
+                                            <span>Architect</span>
+                                        </div>
+                                    </div>
+                                    <div class="team-item">
+                                        <div class="t-avatar-mini" style="background-image: url('../assets/images/marcus_v_ops_lead.png'); background-size: cover; background-position: center;"></div>
+                                        <div class="t-meta">
+                                            <strong>Marcus V.</strong>
+                                            <span>Ops Lead</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECTOR: SETTINGS -->
+                <section class="dashboard-sector" id="sector-settings">
+                    <div class="sector-header">
+                        <h2>Member <span class="text-gold">Settings.</span></h2>
+                        <p>Configure your digital presence and security protocols.</p>
+                    </div>
+
+                    <div class="settings-grid">
+                        <div class="grid-main">
+                            <div class="dashboard-card">
+                                <h3>Account Profile</h3>
+                                <div class="settings-form">
+                                    <div class="form-group-flex">
+                                        <div class="input-block">
+                                            <label>Full Name</label>
+                                            <input type="text" value="Alexander Maxwell" readonly>
+                                        </div>
+                                        <div class="input-block">
+                                            <label>Email Address</label>
+                                            <input type="email" value="alexander@velora.com" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="form-group-flex">
+                                        <div class="input-block">
+                                            <label>Encryption Key ID</label>
+                                            <input type="text" value="VLR-702-SECURE" readonly>
+                                        </div>
+                                        <div class="input-block">
+                                            <label>Emergency Contact</label>
+                                            <input type="text" value="+44 20 7946 0958" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="status-label-gold">PROFILE SANITIZED // NO MODIFICATION REQUIRED</div>
+                                </div>
+                            </div>
+
+                            <div class="dashboard-card">
+                                <h3>Security Protocols</h3>
+                                <div class="protocol-controls">
+                                    <div class="control-row">
+                                        <div class="c-info">
+                                            <strong>Biometric Synchronization</strong>
+                                            <span>Facial/retinal verification active for vault access.</span>
+                                        </div>
+                                        <div class="status-indicator-mini">ACTIVE</div>
+                                    </div>
+                                    <div class="control-row">
+                                        <div class="c-info">
+                                            <strong>Geofence Alerts</strong>
+                                            <span>Automatic Architect notification enabled.</span>
+                                        </div>
+                                        <div class="status-indicator-mini">ACTIVE</div>
+                                    </div>
+                                    <div class="control-row">
+                                        <div class="c-info">
+                                            <strong>Stealth Mode</strong>
+                                            <span>Digital footprint masking initialized.</span>
+                                        </div>
+                                        <div class="status-indicator-mini inactive">PASSIVE</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid-sidebar">
+                            <div class="dashboard-card membership-card">
+                                <h3>Membership Tier</h3>
+                                <div class="tier-badge-large">AMBASSADOR V.01</div>
+                                <div class="tier-stats">
+                                    <div class="ts-item">
+                                        <span>Status</span>
+                                        <strong class="text-gold">ACTIVE</strong>
+                                    </div>
+                                    <div class="ts-item">
+                                        <span>Next Audit</span>
+                                        <strong>12 MAY 2026</strong>
+                                    </div>
+                                </div>
+                                <div class="status-badge-inline" style="margin-top: 15px;">CREDENTIALS VERIFIED</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../assets/js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sidebar = document.getElementById('main-sidebar');
+            const sidebarToggle = document.getElementById('sidebar-toggle');
+            const navItems = document.querySelectorAll('.nav-item, .nav-item-action');
+            const sectors = document.querySelectorAll('.dashboard-sector');
+
+            // Toggle Sidebar for Mobile
+            sidebarToggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                sidebar.classList.toggle('active');
+            });
+
+            // Close Sidebar when clicking outside on Mobile
+            document.addEventListener('click', (e) => {
+                if (window.innerWidth <= 768 && sidebar.classList.contains('active')) {
+                    if (!sidebar.contains(e.target) && e.target !== sidebarToggle) {
+                        sidebar.classList.remove('active');
+                    }
+                }
+            });
+
+            navItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const targetSector = item.getAttribute('data-sector');
+                    
+                    // Update Navigation UI
+                    navItems.forEach(i => i.classList.remove('active'));
+                    item.classList.add('active');
+
+                    // Switch Sectors
+                    sectors.forEach(s => {
+                        s.classList.remove('active');
+                        if (s.id === `sector-${targetSector}`) {
+                            s.classList.add('active');
+                        }
+                    });
+
+                    // Close sidebar on mobile after selection
+                    if (window.innerWidth <= 768) {
+                        sidebar.classList.remove('active');
+                    }
+                });
+            });
+
+            const dashThemeToggle = document.querySelector('#dashboard-theme-toggle');
+            const body = document.body;
+            
+            dashThemeToggle.addEventListener('change', () => {
+                if (dashThemeToggle.checked) {
+                    body.classList.remove('light-mode');
+                    body.classList.add('dark-mode');
+                } else {
+                    body.classList.remove('dark-mode');
+                    body.classList.add('light-mode');
+                }
+            });
+
+            if (body.classList.contains('light-mode')) {
+                dashThemeToggle.checked = false;
+            }
+        });
+    </script>
+</body>
+</html>

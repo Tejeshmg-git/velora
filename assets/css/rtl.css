@@ -1,0 +1,19 @@
+/* 
+ * Velora — RTL Support
+ * Loaded only when dir="rtl" is present on <html> tag
+ */
+
+[dir="rtl"] {
+    direction: rtl;
+    text-align: right;
+}
+
+[dir="rtl"] .btn {
+    /* Adjust icons or specific alignments for RTL if needed */
+}
+
+/* Example: Margin flip for RTL */
+[dir="rtl"] .ml-auto {
+    margin-right: auto;
+    margin-left: 0;
+}

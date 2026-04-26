@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coming Soon | Velora - System Activation</title>
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link href="https://api.fontshare.com/v2/css?f[]=clash-display@200,400,700&f[]=satoshi@300,400,700&display=swap" rel="stylesheet">
+</head>
+<body class="dark-mode coming-soon-page">
+    
+    <!-- Minimalist Nav -->
+    <nav class="coming-soon-nav">
+        <a href="../index.html" class="back-link">← Home</a>
+        <div class="theme-toggle" id="theme-toggle">
+            <span class="toggle-icon">☾</span>
+        </div>
+    </nav>
+
+    <main class="terminal-container">
+        <div class="terminal-content text-center">
+            
+            <div class="status-badge reveal-item">
+                <span class="status-dot"></span>
+                SYSTEM SEQUENCE INITIALIZING
+            </div>
+
+            <a href="../index.html" class="logo brand-logo reveal-item" style="margin-bottom: var(--space-2); margin-left: auto; margin-right: auto; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 10px;">
+                <svg class="logo-icon-svg" viewBox="0 0 24 24" fill="currentColor" style="width: 32px; height: 32px;"><path d="m2 4 3 12h14l3-12-6 7-4-7-4 7-6-7z"></path></svg>
+                <span class="logo-text">VELORA</span>
+            </a>
+
+            <h1 class="terminal-title reveal-text">Refining the <span class="text-gold">Elite Circle.</span></h1>
+            
+            <!-- Countdown Section -->
+            <div class="countdown-grid reveal-item">
+                <div class="countdown-card">
+                    <span id="days" class="digit">00</span>
+                    <span class="label">Days</span>
+                </div>
+                <div class="countdown-card">
+                    <span id="hours" class="digit">00</span>
+                    <span class="label">Hours</span>
+                </div>
+                <div class="countdown-card">
+                    <span id="mins" class="digit">00</span>
+                    <span class="label">Mins</span>
+                </div>
+                <div class="countdown-card">
+                    <span id="secs" class="digit">00</span>
+                    <span class="label">Secs</span>
+                </div>
+            </div>
+
+            <!-- Calibration Bar -->
+            <div class="calibration-section reveal-item">
+                <div class="calibration-header">
+                    <span class="calibration-label">ACCESS CALIBRATION</span>
+                    <span class="calibration-percent">92%</span>
+                </div>
+                <div class="calibration-track">
+                    <div class="calibration-fill" style="width: 92%;"></div>
+                </div>
+            </div>
+
+            <!-- Waitlist Portal -->
+            <div class="waitlist-portal reveal-item">
+                <form class="waitlist-form">
+                    <input type="email" placeholder="Enter your frequency (email)" required class="waitlist-input">
+                    <button type="submit" class="btn btn-primary">Request Activation</button>
+                </form>
+                <p class="waitlist-note">You will be notified upon secure signal activation.</p>
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        // Theme Toggle Logic for Standalone Page
+        const toggle = document.getElementById('theme-toggle');
+        const body = document.body;
+        const icon = toggle.querySelector('.toggle-icon');
+
+        toggle.addEventListener('click', () => {
+            const isDark = body.classList.contains('dark-mode');
+            if (isDark) {
+                body.classList.replace('dark-mode', 'light-mode');
+                icon.innerText = '☀';
+            } else {
+                body.classList.replace('light-mode', 'dark-mode');
+                icon.innerText = '☾';
+            }
+        });
+
+        // Simple Countdown Logic for Coming Soon
+        function updateCountdown() {
+            const targetDate = new Date();
+            targetDate.setDate(targetDate.getDate() + 44); // 44 Days from now
+
+            function refresh() {
+                const now = new Date().getTime();
+                const diff = targetDate - now;
+
+                const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+                document.getElementById('days').innerText = d.toString().padStart(2, '0');
+                document.getElementById('hours').innerText = h.toString().padStart(2, '0');
+                document.getElementById('mins').innerText = m.toString().padStart(2, '0');
+                document.getElementById('secs').innerText = s.toString().padStart(2, '0');
+            }
+            
+            refresh();
+            setInterval(refresh, 1000);
+        }
+        updateCountdown();
+    </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+/* 
+ * Velora — Dark Mode Styles
+ * Automatically detected via (prefers-color-scheme: dark) or toggled via .dark-mode class
+ */
+
+@media (prefers-color-scheme: dark) {
+    :root:not(.light-mode) {
+        --bg-color: var(--color-bg-dark);
+        --text-color: var(--color-bg-light);
+    }
+}
+
+.dark-mode {
+    --bg-color: var(--color-bg-dark);
+    --text-color: var(--color-bg-light);
+}
+
+/* Specific Dark Mode Overrides */
+.dark-mode .btn-primary {
+    color: var(--color-bg-dark);
+}
+
+.dark-mode .btn-secondary {
+    background-color: #2a2a2a;
+    color: var(--color-bg-light);
+}
