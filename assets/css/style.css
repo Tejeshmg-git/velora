@@ -378,6 +378,32 @@ header.scrolled {
     gap: var(--space-4);
 }
 
+/* RTL Toggle Desktop */
+.btn-rtl {
+    background: transparent;
+    border: none;
+    font-family: var(--font-body), -apple-system, sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 2px;
+    color: var(--color-bg-light);
+    text-shadow: -1.5px 0 0 #00ffff, 1.5px 0 0 #ff4d4d;
+    transition: transform 0.2s ease, opacity 0.3s ease;
+}
+
+.light-mode .btn-rtl {
+    color: var(--color-secondary);
+}
+
+.btn-rtl:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
+}
+
 /* Theme Toggle Button */
 .btn-theme {
     background: none;
