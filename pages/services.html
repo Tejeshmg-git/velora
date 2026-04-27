@@ -26,29 +26,60 @@
     <main>
         <!-- Section 1: Services Hero -->
         <section class="services-hero" style="background-image: linear-gradient(rgba(13, 13, 13, 0.8), rgba(13, 13, 13, 0.8)), url('../assets/images/service/herosection-img.jpg'); background-size: cover; background-position: center;">
-            <div class="container hero-content">
-                <div class="hero-tag reveal-item">
-                    <span class="tag-diamond"></span>
-                    <span class="tag-text">The Spectrum</span>
-                    <span class="tag-diamond"></span>
+            <div class="container services-hero-grid">
+                <div class="services-hero-content reveal-text">
+                    <div class="hero-tag reveal-item">
+                        <span class="tag-diamond"></span>
+                        <span class="tag-text">The Spectrum</span>
+                        <span class="tag-diamond"></span>
+                    </div>
+                    <h1 class="reveal-text" style="margin-bottom: var(--space-4);">
+                        The Spectrum of <span class="text-gold">Excellence.</span>
+                    </h1>
+                    <p class="reveal-item" style="margin-bottom: var(--space-6); max-width: 100%;">
+                        Velora operates at the intersection of absolute discretion and limitless access. 
+                        From the stratosphere to the world's most private estates.
+                    </p>
+                    
+                    <div class="hero-actions reveal-item" style="display: flex; gap: 20px;">
+                        <a href="contact.html" class="btn btn-primary">Inquire Now</a>
+                        <a href="membership.html" class="btn btn-outline">View Membership</a>
+                    </div>
                 </div>
-                <h1 class="reveal-text">
-                    The Spectrum of <span class="text-gold">Excellence.</span>
-                </h1>
-                <p class="reveal-item">
-                    Velora operates at the intersection of absolute discretion and limitless access. 
-                    From the stratosphere to the world's most private estates, we curate every nuance of the extraordinary.
-                </p>
-                
-                <div class="hero-actions reveal-item" style="margin-top: var(--space-6); display: flex; justify-content: center; gap: 20px;">
-                    <a href="contact.html" class="btn btn-primary">Inquire Now</a>
-                    <a href="membership.html" class="btn btn-outline">View Membership</a>
+
+                <div class="services-hero-visual reveal-item">
+                    <div class="blueprint-widget" style="transform: scale(0.55); transform-origin: center right;">
+                        <div class="blueprint-header">
+                            <span class="blueprint-status">
+                                <span class="status-dot"></span> System Active
+                            </span>
+                            <span style="opacity: 0.3; font-size: 10px;">S.094</span>
+                        </div>
+                        <div style="margin-bottom: 20px;">
+                            <span style="font-size: 11px; opacity: 0.5; text-transform: uppercase; letter-spacing: 2px;">Operational Spectrum</span>
+                            <div class="blueprint-line"></div>
+                        </div>
+                        <div class="blueprint-stats">
+                            <div class="b-stat">
+                                <span>Global</span>
+                                <span>Logistics</span>
+                            </div>
+                            <div class="b-stat">
+                                <span>Private</span>
+                                <span>Aviation</span>
+                            </div>
+                            <div class="b-stat" style="margin-top: 10px;">
+                                <span>Estate</span>
+                                <span>Steward</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- Section 2: Bespoke Travel & Aviation (The Navigator) -->
-        <section class="service-section service-detail section-padding" style="margin-bottom: var(--space-8);">
+        <section class="service-section service-detail section-padding" style="margin-top: var(--space-10); margin-bottom: var(--space-8);">
             <div class="container">
                 <div class="service-split-grid">
                     <div class="service-content">
@@ -62,25 +93,21 @@
                             Global movement is the ultimate luxury. We manage the complexities of travel so you only experience the destination. Our network provides unrestricted access to the world’s most exclusive travel assets.
                         </p>
                         
-                        <ul class="service-feature-list reveal-item">
+                        <ul class="service-list-standard reveal-item">
                             <li>
-                                <strong>Private Aviation:</strong>
-                                <span class="feature-desc">Immediate activation of light, mid-size, and long-range jets through our vetted global carriers.</span>
+                                <strong>Strategic Aviation Mastery</strong>
+                                <span class="feature-desc">Seamless coordination of light, mid-size, and long-range private jet activation across all global hubs, operating with zero-latency response.</span>
                             </li>
                             <li>
-                                <strong>Off-Market Villas:</strong>
-                                <span class="feature-desc">Strategic acquisition of the world’s most private residential assets.</span>
-                            </li>
-                            <li>
-                                <strong>Marine Charters:</strong>
-                                <span class="feature-desc">Priority access to global superyacht fleets and private maritime experiences.</span>
+                                <strong>Global Property Stewardship</strong>
+                                <span class="feature-desc">Unrestricted access to off-market residential assets and legendary estates before they reach the public sphere, handled with absolute discretion.</span>
                             </li>
                         </ul>
                     </div>
                     <div class="service-visual reveal-item">
                         <div class="luxury-placeholder">
                             <img src="../assets/images/service/Travel.jpg" alt="Bespoke Aviation" style="width: 100%; height: 100%; object-fit: cover;">
-                            <div class="visual-label">Aviation Mastery</div>
+
                             <div class="visual-overlay"></div>
                         </div>
                     </div>
@@ -91,7 +118,12 @@
         <!-- Section 3: Global Real Estate & Stewardship (The Mosaic) -->
         <section class="service-section section-padding" style="background: rgba(255,255,255,0.02);">
             <div class="container">
-                <div class="layout-mosaic">
+                <div class="service-split-grid reverse">
+                    <div class="service-visual reveal-item">
+                        <div class="luxury-placeholder" style="height: 500px;">
+                            <img src="../assets/images/service/Property Focus.jpg" alt="Property Portfolio" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                    </div>
                     <div class="service-content">
                         <div class="section-tag reveal-item">
                             <span class="tag-diamond"></span>
@@ -102,28 +134,16 @@
                         <p class="reveal-item">
                             We act as the stewards of your most valuable physical assets. Our team provides an invisible layer of operational excellence across your global property portfolio.
                         </p>
-                        <ul class="service-feature-list reveal-item">
+                        <ul class="service-list-standard reveal-item">
                             <li>
-                                <strong>Portfolio Oversight:</strong>
-                                <span class="feature-desc">Centralized management of global properties, ensuring consistent operational excellence.</span>
+                                <strong>Portfolio Oversight</strong>
+                                <span class="feature-desc">Centralized management of global properties, ensuring consistent operational excellence and asset preservation across all international territories.</span>
                             </li>
                             <li>
-                                <strong>Asset Acquisition:</strong>
-                                <span class="feature-desc">Discreet representation for high-value sales and strategic portfolio growth.</span>
+                                <strong>Asset Acquisition</strong>
+                                <span class="feature-desc">Discreet representation for high-value sales and strategic portfolio growth across prime global markets for legacy wealth.</span>
                             </li>
                         </ul>
-                    </div>
-                    <div class="service-visual reveal-item">
-                        <div class="luxury-placeholder" style="height: 450px;">
-                            <img src="../assets/images/service/Property Focus.jpg" alt="Property Portfolio" style="width: 100%; height: 100%; object-fit: cover;">
-                            <div class="visual-label">Property Focus</div>
-                        </div>
-                    </div>
-                    <div class="service-visual reveal-item">
-                        <div class="luxury-placeholder" style="height: 450px;">
-                            <img src="../assets/images/service/Global Estates.jpg" alt="Global Estates" style="width: 100%; height: 100%; object-fit: cover;">
-                            <div class="visual-label">Global Estates</div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -133,12 +153,6 @@
         <section class="service-section section-padding curator-section">
             <div class="container">
                 <div class="service-split-grid">
-                    <div class="service-visual reveal-item">
-                        <div class="luxury-placeholder" style="height: 500px;">
-                            <img src="../assets/images/service/The Curator..jpg" alt="Asset Curation" style="width: 100%; height: 100%; object-fit: cover;">
-                            <div class="visual-label">Asset Mastery</div>
-                        </div>
-                    </div>
                     <div class="service-content">
                         <div class="section-tag reveal-item">
                             <span class="tag-diamond"></span>
@@ -181,7 +195,13 @@
                             </div>
                         </div>
                     </div>
+                    <div class="service-visual reveal-item">
+                        <div class="luxury-placeholder" style="height: 500px;">
+                            <img src="../assets/images/service/The Curator..jpg" alt="Asset Curation" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                    </div>
                 </div>
+            </div>
             </div>
         </section>
 
@@ -251,7 +271,7 @@
                     <div class="service-visual reveal-item">
                         <div class="luxury-placeholder" style="height: 500px;">
                             <img src="../assets/images/service/Private Vitality & The Alchemist.jpg" alt="Wellness Mastery" style="width: 100%; height: 100%; object-fit: cover;">
-                            <div class="visual-label">Vitality Archive</div>
+
                         </div>
                     </div>
                 </div>
@@ -265,7 +285,7 @@
                     <div class="service-visual reveal-item">
                         <div class="luxury-placeholder" style="height: 500px;">
                             <img src="../assets/images/service/Household.jpg" alt="Household Management" style="width: 100%; height: 100%; object-fit: cover;">
-                            <div class="visual-label">The Estate Office</div>
+
                         </div>
                     </div>
                     <div class="service-content">
@@ -335,7 +355,7 @@
                     <div class="service-visual reveal-item">
                         <div class="luxury-placeholder">
                             <img src="../assets/images/service/Global Command.jpg" alt="Global Network" style="width: 100%; height: 100%; object-fit: cover;">
-                            <div class="visual-label">Global Connectivity</div>
+
                         </div>
                     </div>
                 </div>
@@ -349,7 +369,7 @@
                     <div class="service-visual reveal-item">
                         <div class="luxury-placeholder">
                             <img src="../assets/images/service/Security.jpg" alt="Privacy & Security" style="width: 100%; height: 100%; object-fit: cover;">
-                            <div class="visual-label">Security Mastery</div>
+
                             <div class="visual-overlay"></div>
                         </div>
                     </div>

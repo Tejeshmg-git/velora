@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initRTL();
     initCounters();
     initServiceFeatures();
+    initModernFAQ();
 });
 
 /**
@@ -187,18 +188,18 @@ function initGlobalComponents() {
                     </div>
                     <div class="footer-links">
                         <h4>NEWSLETTER</h4>
-                        <p style="font-size: 13px; opacity: 0.6; margin-bottom: 20px;">Join the whisper network for elite operational updates.</p>
+                        <p style="opacity: 0.6; margin-bottom: 20px;">Join the whisper network for elite operational updates.</p>
                         <form class="newsletter-form">
                             <input type="email" class="newsletter-input" placeholder="Secure Email">
                             <button type="submit" class="newsletter-btn">→</button>
                         </form>
-                        <p style="font-size: 11px; opacity: 0.4; margin-top: 20px; letter-spacing: 0.5px; text-transform: uppercase; font-weight: 700;">Vetted by world-class standards. Secured with absolute discretion.</p>
+                        <p style="opacity: 0.5; margin-top: 20px; font-weight: 500;">Vetted by world-class standards. Secured with absolute discretion.</p>
                     </div>
                 </div>
                 <div class="footer-bottom">
-                    <p>&copy; ${new Date().getFullYear()} VELORA CONCIERGE GROUP. ALL RIGHTS RESERVED.</p>
+                    <p>&copy; ${new Date().getFullYear()} Velora Concierge Group. All Rights Reserved.</p>
                     <div class="footer-policy">
-                        <a href="#">DISCRETION POLICY</a> | <a href="#">TERMS OF ACCESS</a>
+                        <a href="#">Discretion Policy</a> | <a href="#">Terms of Access</a>
                     </div>
                 </div>
             </div>
@@ -409,4 +410,35 @@ function initCounters() {
     }, observerOptions);
 
     counters.forEach(counter => observer.observe(counter));
+}
+
+/**
+ * Modern FAQ Toggle Logic
+ */
+function initModernFAQ() {
+    const faqItems = document.querySelectorAll('.faq-modern-item');
+    
+    faqItems.forEach(item => {
+        const header = item.querySelector('.faq-modern-header');
+        const icon = item.querySelector('.icon');
+        
+        header.addEventListener('click', () => {
+            const isActive = item.classList.contains('active');
+            
+            // Close all other items
+            faqItems.forEach(otherItem => {
+                if (otherItem !== item) {
+                    otherItem.classList.remove('active');
+                    const otherIcon = otherItem.querySelector('.icon');
+                    if (otherIcon) otherIcon.textContent = '+';
+                }
+            });
+            
+            // Toggle current item
+            item.classList.toggle('active');
+            if (icon) {
+                icon.textContent = item.classList.contains('active') ? '−' : '+';
+            }
+        });
+    });
 }
