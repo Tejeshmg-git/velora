@@ -13,8 +13,11 @@
     <!-- Minimalist Nav -->
     <nav class="coming-soon-nav">
         <a href="../index.html" class="back-link">← Home</a>
-        <div class="theme-toggle" id="theme-toggle">
-            <span class="toggle-icon">☾</span>
+        <div class="nav-controls" style="display: flex; gap: 15px; align-items: center;">
+            <div class="rtl-toggle" id="rtl-toggle" style="cursor: pointer; font-size: 12px; font-weight: bold; letter-spacing: 1px; color: var(--color-primary);">RTL</div>
+            <div class="theme-toggle" id="theme-toggle" style="cursor: pointer;">
+                <span class="toggle-icon">☾</span>
+            </div>
         </div>
     </nav>
 
@@ -77,6 +80,30 @@
     </main>
 
     <script>
+        // RTL Toggle Logic
+        const rtlToggle = document.getElementById('rtl-toggle');
+        const savedRTL = localStorage.getItem('rtl') === 'true';
+        if (savedRTL) {
+            document.documentElement.setAttribute('dir', 'rtl');
+            document.body.classList.add('rtl');
+            if (rtlToggle) rtlToggle.innerText = 'LTR';
+        }
+        if (rtlToggle) {
+            rtlToggle.addEventListener('click', () => {
+                if (document.documentElement.dir === 'rtl') {
+                    document.documentElement.removeAttribute('dir');
+                    document.body.classList.remove('rtl');
+                    localStorage.setItem('rtl', 'false');
+                    rtlToggle.innerText = 'RTL';
+                } else {
+                    document.documentElement.setAttribute('dir', 'rtl');
+                    document.body.classList.add('rtl');
+                    localStorage.setItem('rtl', 'true');
+                    rtlToggle.innerText = 'LTR';
+                }
+            });
+        }
+
         // Theme Toggle Logic for Standalone Page
         const toggle = document.getElementById('theme-toggle');
         const body = document.body;

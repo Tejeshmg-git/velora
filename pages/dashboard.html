@@ -67,6 +67,16 @@
                             <span class="slider round"></span>
                         </label>
                     </div>
+                    <div class="action-item rtl-switch">
+                        <div class="action-left">
+                            <span class="action-icon">⇌</span>
+                            <span class="action-label">RTL Mode</span>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" id="dashboard-rtl-toggle">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
                     <div class="action-item nav-item-action" data-sector="settings">
                         <span class="action-icon">⚙</span>
                         <span class="action-label">Settings</span>
@@ -703,6 +713,28 @@
 
             if (body.classList.contains('light-mode')) {
                 dashThemeToggle.checked = false;
+            }
+
+            // RTL Toggle Logic
+            const dashRTLToggle = document.querySelector('#dashboard-rtl-toggle');
+            if (localStorage.getItem('rtl') === 'true') {
+                document.documentElement.setAttribute('dir', 'rtl');
+                body.classList.add('rtl');
+                if (dashRTLToggle) dashRTLToggle.checked = true;
+            }
+
+            if (dashRTLToggle) {
+                dashRTLToggle.addEventListener('change', () => {
+                    if (dashRTLToggle.checked) {
+                        document.documentElement.setAttribute('dir', 'rtl');
+                        body.classList.add('rtl');
+                        localStorage.setItem('rtl', 'true');
+                    } else {
+                        document.documentElement.removeAttribute('dir');
+                        body.classList.remove('rtl');
+                        localStorage.setItem('rtl', 'false');
+                    }
+                });
             }
         });
     </script>
