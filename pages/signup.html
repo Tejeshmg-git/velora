@@ -13,10 +13,10 @@
     <!-- Minimalist Nav -->
     <nav class="coming-soon-nav" style="justify-content: flex-end;">
         <div class="nav-controls" style="display: flex; gap: 15px; align-items: center;">
-            <div class="rtl-toggle" id="rtl-toggle" style="cursor: pointer; font-size: 12px; font-weight: bold; letter-spacing: 1px; color: var(--color-primary);">RTL</div>
-            <div class="theme-toggle" id="theme-toggle" style="cursor: pointer;">
-                <span class="toggle-icon">☾</span>
-            </div>
+            <button id="rtl-toggle" class="btn-rtl" aria-label="Toggle RTL">RTL</button>
+            <button id="theme-toggle" class="btn-theme" aria-label="Toggle Theme">
+                <svg class="sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+            </button>
         </div>
     </nav>
 
@@ -95,52 +95,64 @@
     <script>
         // RTL Toggle Logic
         const rtlToggle = document.getElementById('rtl-toggle');
+        const body = document.body;
+
+        function updateRTLText() {
+            if (rtlToggle) {
+                rtlToggle.innerText = document.documentElement.dir === 'rtl' ? 'LTR' : 'RTL';
+            }
+        }
+
         const savedRTL = localStorage.getItem('rtl') === 'true';
         if (savedRTL) {
             document.documentElement.setAttribute('dir', 'rtl');
-            document.body.classList.add('rtl');
-            if (rtlToggle) rtlToggle.innerText = 'LTR';
+            body.classList.add('rtl');
+            updateRTLText();
         }
+
         if (rtlToggle) {
             rtlToggle.addEventListener('click', () => {
                 if (document.documentElement.dir === 'rtl') {
                     document.documentElement.removeAttribute('dir');
-                    document.body.classList.remove('rtl');
+                    body.classList.remove('rtl');
                     localStorage.setItem('rtl', 'false');
-                    rtlToggle.innerText = 'RTL';
                 } else {
                     document.documentElement.setAttribute('dir', 'rtl');
-                    document.body.classList.add('rtl');
+                    body.classList.add('rtl');
                     localStorage.setItem('rtl', 'true');
-                    rtlToggle.innerText = 'LTR';
                 }
+                updateRTLText();
             });
         }
 
         // Theme Toggle Logic
-        const toggle = document.getElementById('theme-toggle');
-        const body = document.body;
-        const icon = toggle.querySelector('.toggle-icon');
+        const themeToggle = document.getElementById('theme-toggle');
+        const sunIcon = `<svg class="sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>`;
+        const moonIcon = `<svg class="moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>`;
 
-        // Load saved theme
-        const savedTheme = localStorage.getItem('theme') || 'dark-mode';
-        if (savedTheme === 'light-mode') {
-            body.classList.replace('dark-mode', 'light-mode');
-            icon.innerText = '☀';
+        function updateThemeIcon() {
+            if (themeToggle) {
+                themeToggle.innerHTML = body.classList.contains('dark-mode') ? sunIcon : moonIcon;
+            }
         }
 
-        toggle.addEventListener('click', () => {
-            const isDark = body.classList.contains('dark-mode');
-            if (isDark) {
-                body.classList.replace('dark-mode', 'light-mode');
-                icon.innerText = '☀';
-                localStorage.setItem('theme', 'light-mode');
-            } else {
-                body.classList.replace('light-mode', 'dark-mode');
-                icon.innerText = '☾';
-                localStorage.setItem('theme', 'dark-mode');
-            }
-        });
+        const savedTheme = localStorage.getItem('theme') || 'dark-mode';
+        body.classList.remove('dark-mode', 'light-mode');
+        body.classList.add(savedTheme);
+        updateThemeIcon();
+
+        if (themeToggle) {
+            themeToggle.addEventListener('click', () => {
+                if (body.classList.contains('dark-mode')) {
+                    body.classList.replace('dark-mode', 'light-mode');
+                    localStorage.setItem('theme', 'light-mode');
+                } else {
+                    body.classList.replace('light-mode', 'dark-mode');
+                    localStorage.setItem('theme', 'dark-mode');
+                }
+                updateThemeIcon();
+            });
+        }
 
         // Password Toggle Logic
         const togglePassword = document.querySelector('#togglePassword');

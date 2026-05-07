@@ -504,21 +504,24 @@ header.scrolled {
 /* RTL Toggle Desktop */
 .btn-rtl {
     background: transparent;
-    border: none;
+    border: 1.5px solid var(--color-primary);
+    padding: 6px 12px;
+    border-radius: 6px;
     font-family: var(--font-body), -apple-system, sans-serif;
-    font-size: 16px;
+    font-size: 11px;
     font-weight: 600;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    letter-spacing: 2px;
-    color: var(--color-bg-light);
-    transition: transform 0.2s ease, opacity 0.3s ease;
+    letter-spacing: 1px;
+    color: var(--color-primary) !important;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
 }
 
 .light-mode .btn-rtl {
-    color: var(--color-secondary);
+    border-color: var(--color-primary);
 }
 
 .btn-rtl:hover {
@@ -3988,10 +3991,13 @@ h2, .section-header h2, .ethos-title, .cta-title-new, .portal-main-title {
 .calibration-header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    gap: var(--space-4);
     font-size: 10px;
     letter-spacing: 2px;
     margin-bottom: 10px;
     opacity: 0.8;
+    white-space: nowrap;
 }
 
 .calibration-track {

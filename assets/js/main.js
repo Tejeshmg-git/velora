@@ -214,6 +214,25 @@ function initTheme() {
     const themeToggles = document.querySelectorAll('#theme-toggle, #theme-toggle-mobile');
     const body = document.body;
     
+    const sunIcon = `<svg class="sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>`;
+    const moonIcon = `<svg class="moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>`;
+
+    function updateThemeIcons() {
+        themeToggles.forEach(toggle => {
+            // Check if it's the mobile toggle which has text span
+            const iconSpan = toggle.querySelector('.moon-icon');
+            if (iconSpan) {
+                // Mobile toggle
+                toggle.innerHTML = body.classList.contains('dark-mode') ? 
+                    `${sunIcon}<span>Light Mode</span>` : 
+                    `${moonIcon}<span>Dark Mode</span>`;
+            } else {
+                // Desktop toggle
+                toggle.innerHTML = body.classList.contains('dark-mode') ? sunIcon : moonIcon;
+            }
+        });
+    }
+
     // Check if the page has a hardcoded theme class or a saved preference
     const savedTheme = localStorage.getItem('theme');
     
@@ -222,6 +241,8 @@ function initTheme() {
         body.classList.add(savedTheme);
     }
     
+    updateThemeIcons();
+
     themeToggles.forEach(toggle => {
         toggle.addEventListener('click', () => {
             if (body.classList.contains('dark-mode')) {
@@ -233,6 +254,7 @@ function initTheme() {
                 body.classList.add('dark-mode');
                 localStorage.setItem('theme', 'dark-mode');
             }
+            updateThemeIcons();
         });
     });
 }
