@@ -77,18 +77,23 @@
         const body = document.body;
         const icon = toggle.querySelector('.toggle-icon');
 
+        // Load saved theme
+        const savedTheme = localStorage.getItem('theme') || 'dark-mode';
+        if (savedTheme === 'light-mode') {
+            body.classList.replace('dark-mode', 'light-mode');
+            icon.innerText = '☀';
+        }
+
         toggle.addEventListener('click', () => {
             const isDark = body.classList.contains('dark-mode');
-            const logoImg = document.querySelector('.terminal-logo-icon');
-            
             if (isDark) {
                 body.classList.replace('dark-mode', 'light-mode');
                 icon.innerText = '☀';
-                logoImg.src = '../assets/img/crown-icon-light.png';
+                localStorage.setItem('theme', 'light-mode');
             } else {
                 body.classList.replace('light-mode', 'dark-mode');
                 icon.innerText = '☾';
-                logoImg.src = '../assets/img/crown-icon-dark.png';
+                localStorage.setItem('theme', 'dark-mode');
             }
         });
     </script>

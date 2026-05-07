@@ -188,12 +188,12 @@ function initGlobalComponents() {
                     </div>
                     <div class="footer-links">
                         <h4>NEWSLETTER</h4>
-                        <p style="opacity: 0.6; margin-bottom: 20px;">Join the whisper network for elite operational updates.</p>
+                        <p class="footer-description">Join the whisper network for elite operational updates.</p>
                         <form class="newsletter-form">
                             <input type="email" class="newsletter-input" placeholder="Secure Email">
                             <button type="submit" class="newsletter-btn">→</button>
                         </form>
-                        <p style="opacity: 0.5; margin-top: 20px; font-weight: 500;">Vetted by world-class standards. Secured with absolute discretion.</p>
+                        <p class="footer-subtext">Vetted by world-class standards. Secured with absolute discretion.</p>
                     </div>
                 </div>
                 <div class="footer-bottom">
@@ -219,7 +219,7 @@ function initTheme() {
     
     if (savedTheme) {
         body.classList.remove('light-mode', 'dark-mode');
-        body.classList.add(savedTheme + '-mode');
+        body.classList.add(savedTheme);
     }
     
     themeToggles.forEach(toggle => {
@@ -227,11 +227,11 @@ function initTheme() {
             if (body.classList.contains('dark-mode')) {
                 body.classList.remove('dark-mode');
                 body.classList.add('light-mode');
-                localStorage.setItem('theme', 'light');
+                localStorage.setItem('theme', 'light-mode');
             } else {
                 body.classList.remove('light-mode');
                 body.classList.add('dark-mode');
-                localStorage.setItem('theme', 'dark');
+                localStorage.setItem('theme', 'dark-mode');
             }
         });
     });
