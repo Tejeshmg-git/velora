@@ -71,16 +71,52 @@
 }
 
 .light-mode {
-    --bg-color: var(--color-bg-light);
-    --text-color: var(--color-secondary);
-    --text-muted: #555555;
-    --glass-bg: rgba(0, 0, 0, 0.04);
-    --glass-border: rgba(0, 0, 0, 0.12);
-    --hud-text: var(--color-secondary);
+    --bg-color: #FDFBFA;
+    --text-color: #000000;
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(0, 0, 0, 0.1);
+    --text-muted: #000000;
+    --card-bg: #FFFFFF;
+    --hud-bg: rgba(0, 0, 0, 0.03);
+    --hud-text: #000000;
+    --hud-border: rgba(0, 0, 0, 0.05);
     --accent-color: var(--color-primary);
     --accent-text: var(--color-primary);
     --text-gold: var(--color-primary);
 }
+
+/* Light Mode Intensity Enhancements for Grey/Faded Fonts */
+.light-mode .page-hero-desc,
+.light-mode .hero-v2-content p,
+.light-mode .cta-desc-new,
+.light-mode .featured-content p,
+.light-mode .why-intro p {
+    opacity: 0.9 !important; /* Increased from 0.7/0.8 */
+}
+
+.light-mode .nav-link {
+    opacity: 0.95 !important; /* Increased from 0.8 */
+}
+
+.light-mode .footer-links ul li a {
+    opacity: 0.85 !important; /* Increased from 0.6 */
+}
+
+.light-mode .client-logo,
+.light-mode .feature-list li,
+.light-mode .pricing-features li {
+    opacity: 0.95 !important; /* Increased from 0.75/0.8 */
+}
+
+.light-mode .usp-card p,
+.light-mode .process-step p,
+.light-mode .stat-label,
+.light-mode .pricing-card h3,
+.light-mode .price-label,
+.light-mode .price-duration {
+    opacity: 0.8 !important; /* Increased from 0.4-0.6 */
+}
+
 
 /* Base Styles */
 .mobile-only {
@@ -302,20 +338,18 @@ header.scrolled {
 }
 
 .action-login {
-    border: 1px solid rgba(201, 169, 110, 0.3);
-    padding: 8px 20px;
-    border-radius: 4px;
-    font-size: 12px;
-    letter-spacing: 1.5px;
-    text-decoration: none;
-    color: var(--text-color);
+    padding: 6px 24px !important;
+    font-size: 11px !important;
+    letter-spacing: 2px !important;
+    text-transform: uppercase !important;
+    font-weight: 800 !important;
 }
 
+
 .action-login:hover {
-    background: var(--color-primary);
-    color: var(--color-bg-dark) !important;
-    border-color: var(--color-primary);
+    transform: translateY(-2px);
 }
+
 
 /* Dropdown Logic */
 .nav-item {
@@ -5202,6 +5236,13 @@ h2, .section-header h2, .ethos-title, .cta-title-new, .portal-main-title {
     margin-bottom: var(--space-5) !important;
 }
 
+.light-mode .desk-node .desk-region {
+    color: #000000 !important;
+    opacity: 1 !important;
+}
+
+
+
 .desk-time-hud {
     display: inline-block;
     padding: 8px 16px;
@@ -7232,8 +7273,11 @@ input:checked + .slider:before {
 }
 
 .light-mode .activation-node p {
-    color: rgba(0, 0, 0, 0.5) !important;
+    color: #000000 !important;
+    opacity: 1 !important;
 }
+
+
 
 .light-mode .btn-activate {
     background: rgba(0, 0, 0, 0.02) !important;
@@ -7599,9 +7643,54 @@ input:checked + .slider:before {
 .light-mode .m-bubble p,
 .light-mode .doc-info strong,
 .light-mode .action-label,
-.light-mode .user-meta-small strong {
-    color: #000;
+.light-mode .user-meta-small strong,
+.light-mode .card-value,
+.light-mode .a-info strong,
+.light-mode .v-preview-info strong,
+.light-mode .sector-header h2,
+.light-mode .dashboard-card h3,
+.light-mode .nav-label,
+.light-mode .t-value {
+    color: #000 !important;
 }
+
+.light-mode .doc-info span,
+.light-mode .l-event,
+.light-mode .footprint-desc,
+.light-mode .gm-row.header,
+.light-mode .ai-info span,
+.light-mode .ai-telemetry span,
+.light-mode .w-item span,
+.light-mode .t-meta span,
+.light-mode .input-block label,
+.light-mode .c-info span,
+.light-mode .ts-item span,
+.light-mode .t-content span,
+.light-mode .tel-item span,
+.light-mode .v-card-body p,
+.light-mode .msg-group.date,
+.light-mode .m-timestamp,
+.light-mode .nav-num,
+.light-mode .user-meta-small span,
+.light-mode .t-label,
+.light-mode .summary-item span,
+.light-mode .card-label,
+.light-mode .a-info span,
+.light-mode .v-preview-info span,
+.light-mode .nav-item,
+.light-mode .action-item,
+.light-mode .nav-notification,
+.light-mode .sector-header p,
+.light-mode .dashboard-card p,
+.light-mode .s-info span,
+.light-mode .ab-info span,
+.light-mode .v-tag,
+.light-mode .v-price {
+    color: #000 !important;
+    opacity: 1 !important;
+}
+
+
 
 .light-mode .n-item,
 .light-mode .m-bubble,
@@ -8005,7 +8094,7 @@ input:checked + .slider:before {
     .nav-logo-icon { height: 22px !important; }
     .nav-links-container { gap: 15px !important; }
     .nav-link { font-size: 11px !important; }
-    .action-login { padding: 6px 15px !important; font-size: 11px !important; }
+    .action-login { padding: 5px 15px !important; font-size: 11px !important; font-weight: 800 !important; }
     
     h2 { font-size: 32px !important; }
     .section-padding { padding: 80px 0 !important; }
@@ -9632,3 +9721,12 @@ input:checked + .slider:before {
         left: 20px !important;
     }
 }
+
+/* FINAL OVERRIDE FOR FONT INTENSITY */
+.light-mode .activation-node p,
+.light-mode .desk-node .desk-region,
+.light-mode .desk-node p {
+    color: #000000 !important;
+    opacity: 1 !important;
+}
+
