@@ -486,7 +486,7 @@ header.scrolled {
     background: rgba(201, 169, 110, 0.08);
     border: 1px solid rgba(201, 169, 110, 0.25);
     border-radius: 100px;
-    margin-bottom: var(--space-6);
+    margin-bottom: var(--space-3);
     backdrop-filter: blur(5px);
     transition: all 0.3s ease;
     color: var(--color-primary-dark); /* Default to darker gold */
@@ -1377,7 +1377,7 @@ img {
 
 /* Shared Section Styles */
 .section-header {
-    margin-bottom: var(--space-7);
+    margin-bottom: var(--space-5);
     text-align: center;
 }
 
@@ -1390,22 +1390,22 @@ h2, .section-header h2, .ethos-title, .cta-title-new, .portal-main-title {
 
 /* Section 2: Trusted By */
 .trusted-by {
-    padding: 0;
-    margin-top: -10px; /* Reduced from -50px to prevent hiding scroll indicator */
+    padding: var(--space-6) 0; /* Clean vertical spacing, fully outside the hero section */
+    margin-top: 0;
     position: relative;
     z-index: 10;
 }
 
 .trusted-container {
     background: var(--bg-color);
-    padding: var(--space-4) var(--space-8); /* Balanced horizontal padding */
+    padding: var(--space-4) var(--space-5); /* Balanced horizontal padding aligned with container */
     border: 1px solid rgba(201, 169, 110, 0.15);
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05); /* Cleaner, premium shadow */
     backdrop-filter: blur(15px);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: var(--space-8);
+    gap: var(--space-6);
 }
 
 .trusted-title {
@@ -1416,7 +1416,7 @@ h2, .section-header h2, .ethos-title, .cta-title-new, .portal-main-title {
     opacity: 1; /* Maximum contrast */
     margin: 0;
     white-space: nowrap;
-    padding-right: var(--space-6);
+    padding-right: var(--space-4); /* Tightened for sharper alignment */
     border-right: 1px solid rgba(201, 169, 110, 0.2);
     color: var(--color-primary);
 }
@@ -1797,6 +1797,22 @@ h2, .section-header h2, .ethos-title, .cta-title-new, .portal-main-title {
     background: var(--bg-color);
 }
 
+.memberships .section-tag {
+    margin-bottom: 12px;
+}
+
+.memberships .section-header {
+    margin-bottom: var(--space-5);
+}
+
+.memberships .section-header h2 {
+    margin-bottom: 0 !important;
+}
+
+.memberships .pricing-grid {
+    margin-top: 0 !important;
+}
+
 .memberships .container {
     max-width: 1600px;
 }
@@ -2148,6 +2164,10 @@ h2, .section-header h2, .ethos-title, .cta-title-new, .portal-main-title {
 .final-cta.v1-new .stat-label {
     color: #FFFFFF !important;
     opacity: 0.8;
+}
+
+.cta-title-new {
+    color: #FFFFFF !important; /* Force high contrast white text on dark background */
 }
 
 .cta-content-new {
@@ -3102,7 +3122,7 @@ h2, .section-header h2, .ethos-title, .cta-title-new, .portal-main-title {
     position: absolute;
     inset: 0;
     padding: var(--space-4);
-    background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.8));
+    background: linear-gradient(to bottom, rgba(13, 13, 13, 0.2) 0%, rgba(13, 13, 13, 0.85) 100%);
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -3111,16 +3131,26 @@ h2, .section-header h2, .ethos-title, .cta-title-new, .portal-main-title {
 }
 
 .journal-card:hover .journal-content {
-    background: rgba(201, 169, 110, 0.1);
-    backdrop-filter: blur(5px);
+    background: linear-gradient(to bottom, rgba(201, 169, 110, 0.1) 0%, rgba(13, 13, 13, 0.95) 100%);
+    backdrop-filter: blur(3px);
 }
 
 .journal-cat {
-    font-size: 10px;
+    font-size: 11px; /* Elegant editorial-style size */
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    color: var(--color-primary);
-    margin-bottom: 10px;
+    letter-spacing: 1.5px;
+    color: var(--color-primary) !important;
+    background: rgba(13, 13, 13, 0.75); /* Dark translucent background */
+    backdrop-filter: blur(8px); /* Premium glassmorphism blur */
+    -webkit-backdrop-filter: blur(8px);
+    padding: 6px 14px; /* Balanced rectangular padding */
+    border-radius: 4px; /* Sleek rounded corners */
+    border: 1px solid rgba(201, 169, 110, 0.2); /* Subtle luxury gold outline */
+    display: inline-block;
+    width: fit-content;
+    margin-bottom: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); /* Elegant depth shadow */
 }
 
 .journal-card h3 {
@@ -3504,99 +3534,129 @@ h2, .section-header h2, .ethos-title, .cta-title-new, .portal-main-title {
     padding-left: var(--space-5);
 }
 
-/* Section 3: Pillars Accordion */
+/* Section 3: Pillars Static Grid (Ref SS Rebuild) */
 .pillars-section {
     margin-top: var(--space-10);
 }
 
-.pillars-accordion {
-    display: flex;
-    gap: var(--space-4);
-    height: 500px;
+.pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-5); /* Spacious, premium layout gap */
     margin-top: var(--space-8);
 }
 
-.pillar-item {
-    flex: 1;
-    position: relative;
+.pillar-card {
+    background: #FFFFFF; /* Clean white card in light mode */
+    border: 1px solid rgba(201, 169, 110, 0.15); /* Fine gold/bronze border */
+    border-radius: 4px;
     overflow: hidden;
-    background: rgba(13, 13, 13, 0.85); /* Solid dark glass for contrast */
-    border: 1px solid rgba(201, 169, 110, 0.2);
-    padding: var(--space-8) var(--space-5);
-    transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
-    color: var(--color-bg-light); 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03); /* Soft shadow for premium depth */
+    transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
 }
 
-.pillar-item.active, .pillar-item:hover {
-    flex: 2.5;
-    background: rgba(201, 169, 110, 0.05);
+.dark-mode .pillar-card {
+    background: #121212; /* Premium deep charcoal card in dark mode */
+    border-color: rgba(201, 169, 110, 0.15);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.pillar-card:hover {
+    transform: translateY(-8px);
     border-color: var(--color-primary);
+    box-shadow: 0 20px 40px rgba(201, 169, 110, 0.08);
 }
 
-.pillar-bg-overlay {
+.pillar-image {
+    width: 100%;
+    height: 240px; /* Perfect cinematic crop aspect-ratio */
+    overflow: hidden;
+    position: relative;
+    border-bottom: 1px solid rgba(201, 169, 110, 0.1);
+}
+
+.pillar-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.pillar-card:hover .pillar-image img {
+    transform: scale(1.05); /* Soft, luxurious magnification zoom */
+}
+
+/* Diagonal luxury shimmer overlay line similar to ref ss */
+.pillar-image::after {
+    content: '';
     position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(13, 13, 13, 0.9), transparent);
-    z-index: 1;
-    opacity: 0.5;
-    transition: opacity 0.4s ease;
-}
-
-.pillar-item:hover .pillar-bg-overlay {
-    opacity: 0.8;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, transparent 100%);
+    pointer-events: none;
 }
 
 .pillar-content {
-    position: relative;
-    z-index: 5;
+    padding: var(--space-5) var(--space-4) var(--space-5); /* Spacious, balanced inside padding */
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 }
 
-.pillar-num {
-    display: block;
+.pillar-number {
     font-family: var(--font-heading);
-    font-size: var(--fs-4xl);
+    font-size: 14px;
+    font-weight: 700;
     color: var(--color-primary);
-    opacity: 1; /* Maximized presence */
-    margin-bottom: -10px;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Deep shadow for weight */
-    transition: all 0.4s ease;
+    letter-spacing: 2px;
+    margin-bottom: var(--space-2);
 }
 
-.pillar-item:hover .pillar-num {
-    transform: translateY(-10px);
-    color: #fff; /* Shifts to white on hover for max 'light' contrast */
+.pillar-title {
+    font-family: var(--font-heading);
+    font-size: 24px !important; /* Elegant editorial title size */
+    font-weight: 600 !important;
+    line-height: 1.2 !important;
+    color: var(--text-color) !important; /* Respect theme mode automatically */
+    margin-bottom: var(--space-3) !important;
+    transition: color 0.3s ease;
 }
 
-.pillar-item h3 {
-    font-size: var(--fs-xl);
-    margin-bottom: var(--space-4);
-    white-space: nowrap;
+.pillar-card:hover .pillar-title {
+    color: var(--color-primary) !important; /* Highlights to primary gold on card hover */
 }
 
-.pillar-reveal {
-    max-height: 0;
-    opacity: 0;
-    overflow: hidden;
-    transition: all 0.5s ease 0.1s;
-}
-
-.pillar-item:hover .pillar-reveal, .pillar-item.active .pillar-reveal {
-    max-height: 200px;
-    opacity: 1;
-    margin-top: 10px;
+.pillar-description {
+    font-family: var(--font-body);
+    font-size: 15px !important;
+    line-height: 1.6 !important;
+    color: var(--text-color) !important;
+    opacity: 0.8 !important; /* Perfect visual hierarchy text contrast */
+    margin-bottom: var(--space-4) !important;
+    flex-grow: 1; /* Pushes the CTA link to the very bottom consistently */
 }
 
 .pillar-link {
-    display: block;
-    margin-top: var(--space-4);
-    font-size: var(--fs-xs);
+    display: inline-flex;
+    align-items: center;
+    font-family: var(--font-body);
+    font-size: 12px !important;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    color: var(--color-primary);
-    font-weight: 700;
+    letter-spacing: 1.5px;
+    font-weight: 700 !important;
+    color: var(--color-primary) !important;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    width: fit-content;
+    margin-top: auto;
+}
+
+.pillar-link:hover {
+    opacity: 0.9;
+    transform: translateX(4px); /* Interactive nudge on hover */
 }
 
 /* Section 4: Process */
@@ -4727,6 +4787,18 @@ h2, .section-header h2, .ethos-title, .cta-title-new, .portal-main-title {
     overflow: hidden;
     box-shadow: 0 40px 100px rgba(0,0,0,0.4);
     z-index: 2;
+}
+
+.invitation-card-modern p {
+    color: #FFFFFF !important; /* Force high-contrast white text in both light and dark modes */
+    opacity: 0.9 !important; /* Elegant editorial presence */
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5); /* Drop shadow to float cleanly above detailed background details */
+}
+
+.invitation-card-modern .section-tag {
+    color: var(--color-primary) !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    border-color: rgba(201, 169, 110, 0.3) !important;
 }
 
 .invitation-content {
@@ -6897,6 +6969,26 @@ input:checked + .slider:before {
     gap: var(--space-4);
 }
 
+.dashboard-toggles-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-right: 12px;
+}
+
+.hud-toggle-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.hud-toggle-item .hud-icon {
+    color: var(--color-primary);
+    display: flex;
+    align-items: center;
+    opacity: 0.8;
+}
+
 /* Sector Viewport */
 .sector-viewport {
     padding: var(--space-4); /* Reduced to max */
@@ -9022,30 +9114,30 @@ input:checked + .slider:before {
     }
 
     /* Pillars Mobile Fixes */
-    .pillars-accordion {
-        flex-direction: column !important;
-        height: auto !important;
-        gap: 15px !important;
+    .pillars-grid {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
     }
 
-    .pillar-item {
+    .pillar-card {
         width: 100% !important;
-        height: 280px !important;
-        flex: none !important;
-        padding: 25px 20px !important;
+        height: auto !important;
     }
 
-    .pillar-item.active, .pillar-item:hover {
-        height: 320px !important;
+    .pillar-image {
+        height: 200px !important;
     }
 
-    .pillar-item h3 {
-        white-space: normal !important;
+    .pillar-content {
+        padding: 20px 15px !important;
+    }
+
+    .pillar-title {
         font-size: 20px !important;
     }
 
-    .pillar-num {
-        font-size: 40px !important;
+    .pillar-number {
+        font-size: 12px !important;
     }
 
     .section-tag {
