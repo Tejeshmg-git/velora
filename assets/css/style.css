@@ -94,6 +94,10 @@
     opacity: 0.9 !important; /* Increased from 0.7/0.8 */
 }
 
+.light-mode .axiom-title {
+    color: var(--text-color) !important;
+}
+
 .light-mode .nav-link {
     opacity: 0.95 !important; /* Increased from 0.8 */
 }
@@ -4778,14 +4782,14 @@ h2, .section-header h2, .ethos-title, .cta-title-new, .portal-main-title {
 
 .invitation-card-modern {
     position: relative;
-    background: rgba(255, 255, 255, 0.02);
+    background: linear-gradient(135deg, rgba(10, 10, 10, 0.98) 0%, rgba(20, 20, 20, 0.98) 100%);
     backdrop-filter: blur(50px);
-    border: 1px solid rgba(201, 169, 110, 0.1);
+    border: 1px solid rgba(201, 169, 110, 0.25);
     border-radius: 40px;
     padding: var(--space-8) var(--space-6); /* Further tightened */
     text-align: center;
     overflow: hidden;
-    box-shadow: 0 40px 100px rgba(0,0,0,0.4);
+    box-shadow: 0 40px 100px rgba(0,0,0,0.5);
     z-index: 2;
 }
 
